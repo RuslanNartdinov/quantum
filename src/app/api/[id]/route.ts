@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import path from 'path';
 import { promises as fs } from 'fs';
+import pdf from 'pdf-parse';
 
 const projects = [
   { id: '0', name: 'Проект 1', description: 'Описание проекта 1' },
@@ -36,11 +37,14 @@ export async function GET(request: Request, { params }: { params: { id: string }
   // Читаем файл
   try {
     const fileBuffer = await fs.readFile(pdfPath);
-    console.log('Файл прочитан успешно.');
+    console.log(fileBuffer);
+	//------------------------------------------------------
+	const parsedData = await pdf(fileBuffer);
+	//------------------------------------------------------
 
     return NextResponse.json({
       ...project,
-      pdfContent: fileBuffer.toString('base64'), // Отправляем содержимое файла в Base64
+      pdfContent: parsedData.text, // Отправляем содержимое файла в Base64
     });
   } catch (error) {
     console.error('Ошибка при чтении файла:', error);
