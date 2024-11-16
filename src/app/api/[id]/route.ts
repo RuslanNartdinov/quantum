@@ -1,4 +1,4 @@
-// app/api/projects/[id]/route.ts
+// app/api/[id]/route.ts
 import { NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs'
