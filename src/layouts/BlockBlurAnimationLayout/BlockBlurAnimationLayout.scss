@@ -1,0 +1,16 @@
+.block-layout-blur-custom{
+	&>div{
+		background-color: none;
+		backdrop-filter: blur(15px);
+		-webkit-backdrop-filter: blur(15px);
+		opacity: 1;
+		transition: backdrop-filter 0.5s ease-out, opacity 0.5s ease-out;
+	}
+}
+.inactive-blur-custom{
+	&>div{
+		opacity: 0;
+		backdrop-filter: blur(0px);
+		-webkit-backdrop-filter: blur(0px);
+	}
+}

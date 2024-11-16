@@ -1,0 +1,20 @@
+@import '/src/mixins/mixin.scss';
+
+.navigation-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 150px;
+	height: 45px;
+	font-size: 23px;
+
+	border: 1px solid var(--gold);
+	color: var(--dark-gold);
+	padding: 10px;
+	transition-duration: 0.5s;
+}
+.active-nav-button {
+	@include gold-gradient;
+	color: white
+}

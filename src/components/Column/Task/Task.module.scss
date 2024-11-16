@@ -1,0 +1,24 @@
+.task{
+	height: 150px;
+	width: 100%;
+	background-color: var(--white);
+	border-radius: 15px;
+	color: var(--dark-gold);
+	padding: 10px;
+	.taskName{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 18px;
+		padding: 5px 0;
+	}
+	.taskDescription{
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 10px;
+		font-size: 16px;
+
+	}
+}
