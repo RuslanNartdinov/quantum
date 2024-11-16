@@ -8,6 +8,7 @@ interface Project {
 	name: string;
 	description: string;
 	pdfContent?: string; // Добавлено для содержимого PDF
+	summary?: string; // Добавлено для содержимого PDF
 }
 
 interface PageProps {
@@ -54,8 +55,8 @@ const ProjectPage: React.FC<PageProps> = ({ params }) => {
 			<div className={styles.projectPage}>
 				<h1 className={styles.projectTitle}>{project.name}</h1>
 				<div className={styles.projectContainer}>
-					<div className={styles.projectDescription}>{project.description}</div>
-					<div className={styles.artificalInt}>{project.pdfContent}</div>
+					<div className={styles.projectDescription}>{project.pdfContent}</div>
+					<div className={styles.artificalInt}>{project.summary}</div>
 				</div>
 			</div>
 		</BlockBlurAnimationLayout>
