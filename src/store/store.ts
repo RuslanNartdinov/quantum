@@ -6,6 +6,7 @@ interface AnimationControl {
 }
 
 export interface IWorkflowItem {
+	id: number,
 	name: string;
 	description: string;
 }
@@ -28,37 +29,41 @@ const useStore = create<StoreState>((set) => ({
 	},
 	workflow: [
 		{
-		  title: "Reading Stage",
-		  items: [
-			{
-			  name: "Reconstruction of Mina Port Request",
-			  description: "Redesign and modernization of Mina Port infrastructure",
-			},
-			{
-			  name: "42 Abu Dhabi (School Opening)",
-			  description: "Peer-to-peer learning innovative coding school that can train more than 400 coders per year.",
-			}
-		  ]
+			title: "Reading Stage",
+			items: [
+				{
+					id: 0,
+					name: "Reconstruction of Mina Port Request",
+					description: "Redesign and modernization of Mina Port infrastructure",
+				},
+				{
+					id: 1,
+					name: "42 Abu Dhabi (School Opening)",
+					description: "Peer-to-peer learning innovative coding school that can train more than 400 coders per year.",
+				}
+			]
 		},
 		{
-		  title: "Research Stage",
-		  items: [
-			{
-			  name: "JetSki Transportation to Yas",
-			  description: "Proposing a new method of transporting residents to Yas Island that will be faster than other methods.",
-			}
-		  ]
+			title: "Research Stage",
+			items: [
+				{
+					id: 2,
+					name: "JetSki Transportation to Yas",
+					description: "Proposing a new method of transporting residents to Yas Island that will be faster than other methods.",
+				}
+			]
 		},
 		{
-		  title: "Approval Stage",
-		  items: [
-			{
-			  name: "",
-			  description: "",
-			}
-		  ]
+			title: "Approval Stage",
+			items: [
+				{
+					id: 3,
+					name: "",
+					description: "",
+				}
+			]
 		},
-	  ]
+	]
 }));
 
 export default useStore;

@@ -1,0 +1,42 @@
+@import "/src/mixins/mixin.scss";
+
+.projectPage{
+	width: 100%;
+	height: 100%;
+	height: 800px;
+	border-radius: 15px;
+	padding: 10px;
+
+	background-color: var(--dark-gold);
+	@include items-center;
+	flex-direction: column;
+	.projectTitle{
+		height: 5%;
+		width: 100%;
+		@include items-center;
+		font-size: 22px;
+		margin:  0 0 10px 0;
+	}
+	.projectContainer{
+		height: 95%;
+		width: 100%;
+		@include items-center;
+		flex-direction: row;
+		.projectDescription{
+			width: 50%;
+			height: 100%;
+			background-color: var(--white);
+			border-radius: 15px;
+			margin: 0 10px 0 0;
+			padding: 10px;
+			color: black;
+		}
+		.artificalInt{
+			width: 50%;
+			height: 100%;
+			background-color: var(--pearl);
+			border-radius: 15px;
+			padding: 10px;
+		}
+	}
+}

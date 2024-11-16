@@ -13,8 +13,11 @@
 	color: var(--dark-gold);
 	padding: 10px;
 	transition-duration: 0.5s;
+	background-color: var(--white);
+
 }
 .active-nav-button {
-	@include gold-gradient;
-	color: white
+	background-color: var(--gold);
+	color: white;
+	transition-duration: 0.5s;
 }

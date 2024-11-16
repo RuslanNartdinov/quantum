@@ -1,3 +1,8 @@
 @mixin gold-gradient{
 	background: linear-gradient(90deg, rgb(205, 181, 117), rgb(183,160,117));
 }
+@mixin items-center{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

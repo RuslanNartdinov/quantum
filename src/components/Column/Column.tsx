@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import styles from "./Column.module.scss"
 import type { IWorkflowContainer } from '@/store/store';

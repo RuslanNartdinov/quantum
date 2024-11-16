@@ -83,6 +83,9 @@ h6 {
 	--white: white;
 	--black: black;
 	--dark-gold: rgb(126, 111, 77);
+	--gold-start: rgb(205, 181, 117);
+	--gold-end:  rgb(183,160,117);
+	--pearl: #E2DFD2;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -95,6 +98,6 @@ h6 {
 body {
 	padding: 0 15%;
 	color: var(--foreground);
-	background: var(--background);
+	background: var(--pearl);
 	font-family: Arial, Helvetica, sans-serif;
 }
