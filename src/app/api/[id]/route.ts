@@ -13,7 +13,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
   const { id } = params;
 
   const project = projects.find((p) => p.id === id);
-  const pdfPath = path.join(process.cwd(), 'src', 'app', 'api', 'pdfs', `${id}.pdf`);
+  const pdfPath = path.join(process.cwd(), 'public', 'pdfs', `${id}.pdf`);
   const fileBuffer = await fs.readFile(pdfPath, (data)=>{console.log(data)});
   console.log(fileBuffer)
 
