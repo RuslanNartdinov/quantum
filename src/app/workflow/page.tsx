@@ -7,13 +7,14 @@ import BlockBlurAnimationLayout from '@/layouts/BlockBlurAnimationLayout/BlockBl
 
 const Workflow = () => {
 	const store = useStore()
+	const workflow = store.workflow;
 	return (
 		<BlockBlurAnimationLayout>
-		<div className={styles.workflowColumnsContainer}>
-			{
-				store.workflow.map((item, index)=>(<Column key={index} title={item.title} items={item.items}/>))
-			}
-		</div>
+			<div className={styles.workflowColumnsContainer}>
+				<Column title={workflow.workflowRead.title} items={workflow.workflowRead.items} />
+				<Column title={workflow.workflowResearch.title} items={workflow.workflowResearch.items} />
+				<Column title={workflow.workflowApproval.title} items={workflow.workflowApproval.items} />
+			</div>
 		</BlockBlurAnimationLayout>
 	);
 };

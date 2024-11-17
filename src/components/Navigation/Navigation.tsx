@@ -9,6 +9,7 @@ const Navigation = () => {
 			<div className="navigation-container">
 				<NavigationButton to='/'>Home</NavigationButton>
 				<NavigationButton to='/workflow'>Workflow</NavigationButton>
+				<NavigationButton to='/news'>News</NavigationButton>
 			</div>
 		</div>
 	);

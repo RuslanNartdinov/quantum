@@ -78,24 +78,29 @@ export async function GET(request: Request, { params }: { params: { id: string }
     const fileBuffer = await fs.readFile(pdfPath);
     console.log('Буфер файла:', fileBuffer);
 
-    //------------------------------------------------------
     // Извлекаем текст из PDF
     const parsedData = await pdf(fileBuffer);
     console.log('Извлечённый текст:', parsedData.text);
+	
+    //------------------------------------------------------AI
+    //// Разбиваем текст на части для обработки OpenAI
+    //const textChunks = splitText(parsedData.text);
 
-    // Разбиваем текст на части для обработки OpenAI
-    const textChunks = splitText(parsedData.text);
+    //// Суммаризируем каждую часть текста
+    //const summaries: string[] = [];
+    //for (const chunk of textChunks) {
+    //  const summary = await summarizeText(chunk);
+    //  summaries.push(summary);
+    //}
 
-    // Суммаризируем каждую часть текста
-    const summaries: string[] = [];
-    for (const chunk of textChunks) {
-      const summary = await summarizeText(chunk);
-      summaries.push(summary);
-    }
+    //// Объединяем все суммаризации
+    //const finalSummary = summaries.join('\n\n');
+    //------------------------------------------------------AI
+    //------------------------------------------------------NOAI
+	const finalSummary="This document contains exercises from Module 00 of C++ modules. It covers topics such as namespaces, classes, member functions, stdio streams, initialization lists, static, const, and other basic concepts. The goal of the modules is to introduce Object-Oriented Programming in C++. The exercises will increase in complexity, and code should comply with the C++98 standard. It is recommended to explore modern C++ further after completing these exercises. Additionally, general rules such as compiling with specific flags and following naming conventions are provided. The text provides guidelines and restrictions for coding in C++ modules. It emphasizes the use of standard library functions over C functions, prohibits the use of external libraries such as Boost, and lists forbidden functions. It also mentions that namespaces and friend keywords are forbidden, except when explicitly allowed. Additionally, it states that memory leakage can occur in C++. The text outlines rules for memory allocation, class design, function implementation, header file usage, and file organization in coding exercises. It also encourages reading instructions thoroughly, using additional files if necessary, and avoiding laziness. The text emphasizes following guidelines and theoretical concepts while implementing classes and scripts for coding exercises, such as the Megaphone exercise. The text describes a programming exercise to create a phonebook software in C++. The program must have two classes: PhoneBook and Contact, with specific functionalities. The phonebook can store up to 8 contacts, replacing the oldest one if a new contact is added. The user can input information for a new contact using the ADD command, with fields for first name, last name, nickname, phone number, and darkest secret. The program only accepts commands ADD, SEARCH, and EXIT. The text provides guidelines for creating a program that manages contacts, with commands such as SEARCH and EXIT. Contact information is displayed in a specific format, and the program waits for more input until the user enters EXIT. The program must be named appropriately. The second part of the text sets the scene for an exercise in which the protagonist must recreate a lost file at their new job at a bank. Despite challenges, they decide to stay and tackle the task at hand. The text describes a scenario where a developer is given files to work on, and they successfully recreate the missing file Account.cpp by using the provided Account.hpp header file and a log file for reference. The developer successfully passes tests and impresses their colleagues with their C++ skills. The text also mentions that the order of destructors being called may vary depending on the compiler/operating system. Lastly, it instructs on how to submit the assignment for evaluation."
+    //------------------------------------------------------NOAI
 
-    // Объединяем все суммаризации
-    const finalSummary = summaries.join('\n\n');
-    //------------------------------------------------------
+
 
     return NextResponse.json({
       ...project,
