@@ -1,0 +1,80 @@
+@import "/src/mixins/mixin.scss";
+
+.projectPage{
+	width: 100%;
+	height: 100%;
+	height: 800px;
+	border-radius: 15px;
+	padding: 10px;
+
+	background-color: var(--dark-gold);
+	@include items-center;
+	flex-direction: column;
+	.projectTitle{
+		height: 5%;
+		width: 100%;
+		@include items-center;
+		font-size: 22px;
+		margin:  0 0 10px 0;
+	}
+	.projectContainer{
+		height: 95%;
+		width: 100%;
+		@include items-center;
+		flex-direction: row;
+		.projectDescription{
+			width: 50%;
+			height: 100%;
+			background-color: var(--white);
+			border-radius: 15px;
+			margin: 0 10px 0 0;
+			padding: 10px;
+			color: black;
+			overflow: scroll;
+			font-size: 18px;
+		}
+		.artificalIntContainer
+		{
+			width: 50%;
+			height: 100%;
+			background-color: var(--pearl);
+			border-radius: 15px;
+			padding: 10px;
+			color: var(--dark-gold);
+			font-size: 18px;
+			.artificalIntText{
+				height: 80%;
+				overflow: scroll;
+			}
+			.artificalIntControl{
+				color: white;
+				min-height: 20%;
+				height: 20%;
+				min-width: 100%;
+				padding: 10px;
+				background-color: var(--dark-gold);
+				border-radius: 15px;
+				@include items-center;
+				flex-direction: row;
+				>*{
+					border-radius: 15px;
+				}
+				.intControlSubmit{
+					height: 100%;
+					width: 33%;
+					background-color: green;
+				}
+				.intControlDecline{
+					height: 100%;
+					width: 33%;
+					background-color: red;
+				}
+				.intControlRegenerate{
+					height: 100%;
+					width: 33%;
+					background-color: var(--pearl);
+				}
+			}
+		}
+	}
+}

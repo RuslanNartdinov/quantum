@@ -32,6 +32,7 @@ interface StoreState {
     deleteItemById: (id: number) => void;
     moveToNextStage: (id: number) => void;
     moveToPreviousStage: (id: number) => void;
+	getStageById: (id: number) => projectStage | null;
 }
 
 const useStore = create<StoreState>((set) => ({
@@ -94,46 +95,70 @@ const useStore = create<StoreState>((set) => ({
 
             return { workflow: updatedWorkflow };
         }),
-    moveToNextStage: (id) =>
-        set((state) => {
-            const updatedWorkflow: IWorkflowContainer = { ...state.workflow };
-            const stages = ['workflowRead', 'workflowResearch', 'workflowApproval'] as const;
-
-            for (let i = 0; i < stages.length; i++) {
-                const currentStage = stages[i];
-                const itemIndex = updatedWorkflow[currentStage].items.findIndex((item) => item.id === id);
-
-                if (itemIndex !== -1) {
-                    const [item] = updatedWorkflow[currentStage].items.splice(itemIndex, 1);
-                    if (i + 1 < stages.length) {
-                        updatedWorkflow[stages[i + 1]].items.push(item);
-                    }
-                    break;
-                }
-            }
-
-            return { workflow: updatedWorkflow };
-        }),
-    moveToPreviousStage: (id) =>
-        set((state) => {
-            const updatedWorkflow: IWorkflowContainer = { ...state.workflow };
-            const stages = ['workflowRead', 'workflowResearch', 'workflowApproval'] as const;
-
-            for (let i = stages.length - 1; i >= 0; i--) {
-                const currentStage = stages[i];
-                const itemIndex = updatedWorkflow[currentStage].items.findIndex((item) => item.id === id);
-
-                if (itemIndex !== -1) {
-                    const [item] = updatedWorkflow[currentStage].items.splice(itemIndex, 1);
-                    if (i - 1 >= 0) {
-                        updatedWorkflow[stages[i - 1]].items.push(item);
-                    }
-                    break;
-                }
-            }
-
-            return { workflow: updatedWorkflow };
-        }),
+		moveToNextStage: (id: number) =>
+			set((state) => {
+				const updatedWorkflow: IWorkflowContainer = { ...state.workflow };
+				const stages = ['workflowRead', 'workflowResearch', 'workflowApproval'] as const;
+		
+				for (let i = 0; i < stages.length; i++) {
+					const currentStage = stages[i];
+					const itemIndex = updatedWorkflow[currentStage].items.findIndex((item) => item.id === id);
+		
+					if (itemIndex !== -1) {
+						const [item] = updatedWorkflow[currentStage].items.splice(itemIndex, 1); // Удаляем элемент
+						item.stage = stages[i + 1] as projectStage; // Изменяем stage
+						if (i + 1 < stages.length) {
+							updatedWorkflow[stages[i + 1]].items.push(item); // Перемещаем в следующий массив
+						}
+						break;
+					}
+				}
+		
+				return { workflow: updatedWorkflow };
+			}),
+		moveToPreviousStage: (id: number) =>
+			set((state) => {
+				const updatedWorkflow: IWorkflowContainer = { ...state.workflow };
+				const stages = ['workflowRead', 'workflowResearch', 'workflowApproval'] as const;
+		
+				for (let i = stages.length - 1; i >= 0; i--) {
+					const currentStage = stages[i];
+					const itemIndex = updatedWorkflow[currentStage].items.findIndex((item) => item.id === id);
+		
+					if (itemIndex !== -1) {
+						const [item] = updatedWorkflow[currentStage].items.splice(itemIndex, 1); // Удаляем элемент
+						item.stage = stages[i - 1] as projectStage; // Изменяем stage
+						if (i - 1 >= 0) {
+							updatedWorkflow[stages[i - 1]].items.push(item); // Перемещаем в предыдущий массив
+						}
+						break;
+					}
+				}
+		
+				return { workflow: updatedWorkflow };
+			}),
+		getStageById: (id: number) => {
+			let stage: projectStage | null = null;
+		
+			set((state) => {
+				const workflow = state.workflow;
+				const stages: (keyof IWorkflowContainer)[] = ['workflowRead', 'workflowResearch', 'workflowApproval'];
+		
+				for (const stageKey of stages) {
+					const column = workflow[stageKey];
+					const foundItem = column.items.find((item: IWorkflowItem) => item.id === id);
+		
+					if (foundItem) {
+						stage = foundItem.stage;
+						break;
+					}
+				}
+		
+				return state;
+			});
+		
+			return stage;
+		},
 }));
 
 export default useStore;

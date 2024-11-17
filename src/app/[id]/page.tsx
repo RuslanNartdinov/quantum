@@ -1,11 +1,9 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import styles from "./styles.module.scss";
-import BlockBlurAnimationLayout from '@/layouts/BlockBlurAnimationLayout/BlockBlurAnimationLayout';
 import useStore from '@/store/store';
-import { useRouter } from 'next/navigation';
+import ReadingStage from './ReadingStage/ReadingStage';
 
-interface Project {
+export interface Project {
 	id: string;
 	name: string;
 	description: string;
@@ -23,7 +21,6 @@ const ProjectPage: React.FC<PageProps> = ({ params }) => {
 	const [project, setProject] = useState<Project | null>(null);
 	const [error, setError] = useState<string | null>(null);
 	const store = useStore();
-	const router = useRouter();
 	useEffect(() => {
 		const fetchProject = async () => {
 			try {
@@ -52,34 +49,10 @@ const ProjectPage: React.FC<PageProps> = ({ params }) => {
 	if (!project) {
 		return <div>Загрузка...</div>;
 	}
-
-	const handleSubmit = () =>{
-		store.moveToNextStage(Number(params.id));
-		router.push('/workflow');
-	}
-	const handleDelete = () =>{
-		store.deleteItemById(Number(params.id));
-		router.push('/workflow');
-	}
+	if(store.getStageById(Number(params.id)) === 'reading')
+		return (<ReadingStage project={project} id={params.id}/>)
 	return (
-		<BlockBlurAnimationLayout>
-			<div className={styles.projectPage}>
-				<h1 className={styles.projectTitle}>{project.name}</h1>
-				<div className={styles.projectContainer}>
-					<div className={styles.projectDescription}>{project.pdfContent}</div>
-					<div className={styles.artificalIntContainer}>
-						<div className={styles.artificalIntText}>
-						{project.summary}
-						</div>
-						<div className={styles.artificalIntControl}>
-							<button onClick={handleSubmit} className={styles.intControlSubmit}>Submit</button>
-							<button className={styles.intControlRegenerate}>Regenerate</button>
-							<button onClick={handleDelete} className={styles.intControlDecline}>Delete</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</BlockBlurAnimationLayout>
+		<div className="">ERROR</div>
 	);
 };
 
