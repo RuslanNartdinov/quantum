@@ -1,0 +1,36 @@
+@import "/src/mixins/mixin.scss";
+.finance-block{
+	width: 100%;
+	border-radius: 15px;
+	background-color: var(--dark-gold);
+	padding: 10px;
+	.finance-title{
+		font-size: 24px;
+		@include gold-gradient;
+		border-radius: 15px;
+		padding: 10px;
+	}
+	.finance-text{
+
+		padding: 10px;
+		padding-left: 0;
+		font-size: 18px;
+	}
+	.finance-watched{
+		display: flex;
+		align-items: center;
+		justify-content: end;
+		width: 100%;
+		.watched{
+			width: 30px;
+			height: 30px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 30px;
+			background-color: var(--gold);
+			border: 2px solid white;
+			margin-left: 7px;
+		}
+	}
+}

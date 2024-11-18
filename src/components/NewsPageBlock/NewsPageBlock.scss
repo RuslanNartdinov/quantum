@@ -1,0 +1,21 @@
+@import "/src/mixins/mixin.scss";
+.news-page-block{
+	min-width: 350px;
+	height: 175px;
+	background-color: var(--dark-gold);
+	padding: 10px;
+	margin: 10px;
+	border-radius: 15px;
+	@include items-center;
+	flex-direction: column;
+	.block-title{
+		font-size: 28px;
+		margin-bottom: 10px;
+	}
+	.block-icon{
+		>svg{
+			height: 50px;
+			width: 50px;
+		}
+	}
+}

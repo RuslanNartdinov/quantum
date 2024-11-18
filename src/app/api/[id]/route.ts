@@ -43,9 +43,9 @@ async function summarizeText(text: string): Promise<string> {
 }
 
 const projects = [
-  { id: '0', name: 'Проект 1', description: 'Описание проекта 1' },
-  { id: '1', name: 'Проект 2', description: 'Описание проекта 2' },
-  { id: '2', name: 'Проект 3', description: 'Описание проекта 3' },
+  { id: '1', name: "Reconstruction of Mina Port Request", description: 'Описание проекта 1' },
+  { id: '2', name: "42 Abu Dhabi (School Opening)", description: 'Описание проекта 2' },
+  { id: '3', name: "JetSki Transportation to Yas", description: 'Описание проекта 3' },
 ];
 
 export async function GET(request: Request, { params }: { params: { id: string } }) {
