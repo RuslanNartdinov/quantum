@@ -7,11 +7,38 @@ interface AnimationControl {
 }
 
 export type projectStage = 'workflowRead' | 'workflowResearch' | 'workflowApproval';
+
+
+export interface IQuestion{
+	success: boolean;
+	commentary: string;
+}
+export interface IStatements{
+	questionOne: IQuestion;
+	questionTwo: IQuestion;
+	questionThree: IQuestion;
+}
+
+export const emtyStatements : IStatements = {
+	questionOne: {
+		success: false,
+		commentary: '',
+	},
+	questionTwo: {
+		success: false,
+		commentary: '',
+	},
+	questionThree: {
+		success: false,
+		commentary: '',
+	},
+}
 export interface IWorkflowItem {
 	stage: projectStage;
 	id: number;
 	name: string;
 	description: string;
+	statements: IStatements;
 }
 
 export interface IWorkflowColumn {
@@ -33,6 +60,8 @@ interface StoreState {
 	moveToNextStage: (id: number) => void;
 	moveToPreviousStage: (id: number) => void;
 	getStageById: (id: number) => projectStage | null;
+	updateStatementsById: (id: number, newStatements: IStatements) => void;
+	getElementById: (id: number) => IWorkflowItem | null;
 }
 
 const useStore = create<StoreState>((set) => ({
@@ -50,12 +79,14 @@ const useStore = create<StoreState>((set) => ({
 					id: 0,
 					name: "Reconstruction of Mina Port Request",
 					description: "Redesign and modernization of Mina Port infrastructure",
+					statements: {...emtyStatements}
 				},
 				{
 					stage: 'workflowRead',
 					id: 2,
 					name: "42 Abu Dhabi (School Opening)",
 					description: "Peer-to-peer learning innovative coding school that can train more than 400 coders per year.",
+					statements: {...emtyStatements}
 				}
 			],
 		},
@@ -67,18 +98,20 @@ const useStore = create<StoreState>((set) => ({
 					id: 1,
 					name: "JetSki Transportation to Yas",
 					description: "Proposing a new method of transporting residents to Yas Island that will be faster than other methods.",
+					statements: {...emtyStatements}
 				}
 			],
 		},
 		workflowApproval: {
 			title: "Approval Stage",
 			items: [
-				{
-					stage: 'workflowApproval',
-					id: 3,
-					name: "Approval Needed",
-					description: "Awaiting final decision",
-				}
+				//{
+				//	stage: 'workflowApproval',
+				//	id: 3,
+				//	name: "Approval Needed",
+				//	description: "Awaiting final decision",
+				//	statements: {...emtyStatements}
+				//}
 			],
 		},
 	},
@@ -152,6 +185,38 @@ const useStore = create<StoreState>((set) => ({
 
 		return null;
 	},
+	updateStatementsById: (id: number, newStatements: IStatements) =>
+		set((state) => {
+			const updatedWorkflow: IWorkflowContainer = { ...state.workflow };
+
+			(Object.keys(updatedWorkflow) as (keyof IWorkflowContainer)[]).forEach((key) => {
+				updatedWorkflow[key].items = updatedWorkflow[key].items.map((item) => {
+					if (item.id === id) {
+						return { ...item, statements: newStatements };
+					}
+					return item;
+				});
+			});
+
+			return { workflow: updatedWorkflow };
+		}),
+		getElementById: (id: number): IWorkflowItem | null => {
+			const { workflow } = useStore.getState();
+		  
+			
+			const stages: (keyof IWorkflowContainer)[] = ['workflowRead', 'workflowResearch', 'workflowApproval'];
+		  
+			for (const stageKey of stages) {
+			  const column = workflow[stageKey];
+			  const foundItem = column.items.find((item) => item.id === id);
+		  
+			  if (foundItem) {
+				return foundItem;
+			  }
+			}
+		  
+			return null;
+		  },
 }));
 
 export default useStore;

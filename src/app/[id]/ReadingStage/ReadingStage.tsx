@@ -4,6 +4,7 @@ import styles from "./styles.module.scss"
 import type { Project } from '../page';
 import useStore from '@/store/store';
 import { useRouter } from 'next/navigation';
+import CheckList from './CheckList/CheckList';
 
 const text = `
 42 ABU DHABI: PROJECT PROPOSAL DOCUMENT
@@ -812,15 +813,22 @@ interface IReadingStage {
 }
 
 const ReadingStage: React.FC<IReadingStage> = ({ project, id }) => {
+
+
 	const store = useStore();
 	const router = useRouter();
 	const handleSubmit = () => {
-		store.moveToNextStage(Number(id));
-		router.push('/workflow');
+		if (store.getStageById(Number(id)) !== 'workflowApproval') {
+
+			store.moveToNextStage(Number(id));
+			router.push('/workflow');
+		}
 	}
 	const handleDelete = () => {
-		store.moveToPreviousStage(Number(id));
-		router.push('/workflow');
+		if (store.getStageById(Number(id)) !== 'workflowRead') {
+			store.moveToPreviousStage(Number(id));
+			router.push('/workflow');
+		}
 	}
 	return (
 		<BlockBlurAnimationLayout>
@@ -840,7 +848,7 @@ const ReadingStage: React.FC<IReadingStage> = ({ project, id }) => {
 						</div>
 					</div>
 				</div>
-				<div className={styles.checkList}></div>
+				<CheckList id={Number(id)} />
 			</div>
 		</BlockBlurAnimationLayout>
 	);

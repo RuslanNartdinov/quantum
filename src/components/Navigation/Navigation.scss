@@ -41,21 +41,18 @@
 	}
 }
 
-/* Небольшие экраны (от 768px и ниже) */
 @media (max-width: 768px) {
 	.navigation {
 		padding: 0 9%;
 	}
 }
 
-/* Маленькие экраны (от 600px и ниже) */
 @media (max-width: 600px) {
 	.navigation {
 		padding: 0 6%;
 	}
 }
 
-/* Очень маленькие экраны (меньше 600px) */
 @media (max-width: 480px) {
 	.navigation {
 		padding: 0 3%;

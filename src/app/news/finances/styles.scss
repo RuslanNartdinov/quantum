@@ -34,12 +34,17 @@
 			margin-bottom: 10px;
 		}
 		.ai_text{
+			min-height: 70%;
+			width: 100%;
 			background-color: rgba($color: #fff7f75b, $alpha: 1.0);
 			color: var(--gold-text);
 			font-size: 20px;
 			line-height: 1.3;
 			padding: 10px;
 			border-radius: 15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 		.ai_input{
 			display: flex;

@@ -1,0 +1,64 @@
+@import "/src//mixins/mixin.scss";
+.checkList {
+	width: 100%;
+	height: 600px;
+	background-color: var(--dark-gold);
+	border-radius: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	.notes {
+		width: 100%;
+		height: 100%;
+		background-color: var(--pearl);
+		border-radius: 15px;
+		margin-right: 10px;
+		padding: 10px;
+		@include items-center;
+		flex-direction: column;
+		justify-content: flex-start;
+		overflow: scroll;
+		.question {
+			@include items-center;
+			align-items: start;
+			flex-direction: column;
+			justify-content: flex-start;
+			color: var(--dark-gold);
+			font-size: 20px;
+			@include gold-gradient;
+			padding: 10px;
+			border-radius: 15px;
+			margin-bottom: 10px;
+			.questionText {
+				display: flex;
+				align-items: center;
+				margin-bottom: 10px;
+				input {
+					margin-right: 10px;
+					min-height: 20px;
+					min-width: 20px;
+				}
+			}
+			textarea {
+				width: 100%;
+				border-radius: 15px;
+				padding: 10px;
+			}
+		}
+		button {
+			background-color: #e4f4e7;
+			border: 1px solid #3f8e50;
+			color: #3f8e50;
+			padding: 10px;
+			border-radius: 15px;
+			font-size: 22px;
+			transition-duration: 0.3s;
+			&:hover{
+				background-color: #3f8e50;
+				color: white;
+				box-shadow: 0 0 20px 5px #3f8e50;
+			}
+		}
+	}
+}
