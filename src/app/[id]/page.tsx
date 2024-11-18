@@ -1,8 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import useStore from '@/store/store';
+//import useStore from '@/store/store';
 import ReadingStage from './ReadingStage/ReadingStage';
-import ResearchingStage from './ResearchingStage/ResearchingStage';
+//import ResearchingStage from './ResearchingStage/ResearchingStage';
 
 export interface Project {
 	id: string;
@@ -21,7 +21,7 @@ interface PageProps {
 const ProjectPage: React.FC<PageProps> = ({ params }) => {
 	const [project, setProject] = useState<Project | null>(null);
 	const [error, setError] = useState<string | null>(null);
-	const store = useStore();
+	//const store = useStore();
 	useEffect(() => {
 		const fetchProject = async () => {
 			try {
@@ -50,12 +50,12 @@ const ProjectPage: React.FC<PageProps> = ({ params }) => {
 	if (!project) {
 		return <div>Загрузка...</div>;
 	}
-	if(store.getStageById(Number(params.id)) === 'workflowRead')
-		return (<ReadingStage project={project} id={params.id}/>)
-	else if(store.getStageById(Number(params.id)) === 'workflowResearch')
-		return (<ResearchingStage project={project} id={params.id}/>)
+	//if(store.getStageById(Number(params.id)) === 'workflowRead')
+	//	return (<ReadingStage project={project} id={params.id}/>)
+	//else if(store.getStageById(Number(params.id)) === 'workflowResearch')
+	//	return (<ResearchingStage project={project} id={params.id}/>)
 	return (
-		<div className="">ERROR</div>
+		<ReadingStage project={project} id={params.id}/>
 	);
 };
 
