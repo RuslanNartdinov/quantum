@@ -105,10 +105,10 @@ const useStore = create<StoreState>((set) => ({
 				const itemIndex = updatedWorkflow[currentStage].items.findIndex((item) => item.id === id);
 
 				if (itemIndex !== -1) {
-					const [item] = updatedWorkflow[currentStage].items.splice(itemIndex, 1); // Удаляем элемент
-					item.stage = stages[i + 1] as projectStage; // Изменяем stage
+					const [item] = updatedWorkflow[currentStage].items.splice(itemIndex, 1);
+					item.stage = stages[i + 1] as projectStage;
 					if (i + 1 < stages.length) {
-						updatedWorkflow[stages[i + 1]].items.push(item); // Перемещаем в следующий массив
+						updatedWorkflow[stages[i + 1]].items.push(item);
 					}
 					break;
 				}
@@ -126,10 +126,10 @@ const useStore = create<StoreState>((set) => ({
 				const itemIndex = updatedWorkflow[currentStage].items.findIndex((item) => item.id === id);
 
 				if (itemIndex !== -1) {
-					const [item] = updatedWorkflow[currentStage].items.splice(itemIndex, 1); // Удаляем элемент
-					item.stage = stages[i - 1] as projectStage; // Изменяем stage
+					const [item] = updatedWorkflow[currentStage].items.splice(itemIndex, 1);
+					item.stage = stages[i - 1] as projectStage;
 					if (i - 1 >= 0) {
-						updatedWorkflow[stages[i - 1]].items.push(item); // Перемещаем в предыдущий массив
+						updatedWorkflow[stages[i - 1]].items.push(item);
 					}
 					break;
 				}
@@ -138,7 +138,7 @@ const useStore = create<StoreState>((set) => ({
 			return { workflow: updatedWorkflow };
 		}),
 	getStageById: (id: number): projectStage | null => {
-		const { workflow } = useStore.getState(); // Получаем текущее состояние без set
+		const { workflow } = useStore.getState();
 		const stages: (keyof IWorkflowContainer)[] = ['workflowRead', 'workflowResearch', 'workflowApproval'];
 
 		for (const stageKey of stages) {
@@ -146,12 +146,11 @@ const useStore = create<StoreState>((set) => ({
 			const foundItem = column.items.find((item) => item.id === id);
 
 			if (foundItem) {
-				console.log(foundItem.stage)
-				return foundItem.stage; // Возвращаем stage найденного элемента
+				return foundItem.stage;
 			}
 		}
 
-		return null; // Если элемент не найден, возвращаем null
+		return null;
 	},
 }));
 

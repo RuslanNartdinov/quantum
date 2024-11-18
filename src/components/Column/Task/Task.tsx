@@ -14,7 +14,6 @@ const Task : React.FC<ITask> = ({taskData}) => {
 	const store = useStore();
 
 	const handleClick = () => {
-		console.log("animation started")
 		store.animationControl.startAnimation();
 
 		setTimeout(() => {

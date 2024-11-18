@@ -806,42 +806,43 @@ provide students with cutting-edge tools and resources.
 ● Student Feedback Integration: Ongoing efforts to incorporate student feedback into
 the learning model, ensuring that 42 Abu Dhabi remains responsive to
 `
-interface IReadingStage{
+interface IReadingStage {
 	project: Project;
 	id: string;
 }
 
-const ReadingStage:React.FC<IReadingStage> = ({project, id}) => {
+const ReadingStage: React.FC<IReadingStage> = ({ project, id }) => {
 	const store = useStore();
 	const router = useRouter();
-	const handleSubmit = () =>{
+	const handleSubmit = () => {
 		store.moveToNextStage(Number(id));
 		router.push('/workflow');
 	}
-	const handleDelete = () =>{
+	const handleDelete = () => {
 		store.moveToPreviousStage(Number(id));
 		router.push('/workflow');
 	}
 	return (
 		<BlockBlurAnimationLayout>
-		<div className={styles.projectPage}>
-			<h1 className={styles.projectTitle}>{project.name}</h1>
-			<div className={styles.projectContainer}>
-				<div className={styles.projectDescription}>{text}</div>
-				<div className={styles.artificalIntContainer}>
-					<div className={styles.artificalIntTitle}>Summary by AI</div>
-					<div className={styles.artificalIntText}>
-					{project.summary}
-					</div>
-					<div className={styles.artificalIntControl}>
-						<button onClick={handleDelete} className={styles.intControlDecline}>Move to previous stage</button>
-						<button className={styles.intControlRegenerate}>Regenerate</button>
-						<button onClick={handleSubmit} className={styles.intControlSubmit}>Move to next stage</button>
+			<div className={styles.projectPage}>
+				<h1 className={styles.projectTitle}>{project.name}</h1>
+				<div className={styles.projectContainer}>
+					<div className={styles.projectDescription}>{text}</div>
+					<div className={styles.artificalIntContainer}>
+						<div className={styles.artificalIntTitle}>Summary by AI</div>
+						<div className={styles.artificalIntText}>
+							{project.summary}
+						</div>
+						<div className={styles.artificalIntControl}>
+							<button onClick={handleDelete} className={styles.intControlDecline}>Move to previous stage</button>
+							<button className={styles.intControlRegenerate}>Regenerate</button>
+							<button onClick={handleSubmit} className={styles.intControlSubmit}>Move to next stage</button>
+						</div>
 					</div>
 				</div>
+				<div className={styles.checkList}></div>
 			</div>
-		</div>
-	</BlockBlurAnimationLayout>
+		</BlockBlurAnimationLayout>
 	);
 };
 

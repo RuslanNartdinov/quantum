@@ -19,7 +19,6 @@ const NavigationButton: React.FC<INavigationButton> = ({ children, to }) => {
 	const handleClick = (e: React.MouseEvent) => {
 		e.preventDefault();
 		if (!isActive) {
-			console.log("animation started")
 			store.animationControl.startAnimation();
 
 			setTimeout(() => {

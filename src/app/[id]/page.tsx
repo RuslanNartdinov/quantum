@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 //import useStore from '@/store/store';
 import ReadingStage from './ReadingStage/ReadingStage';
 //import ResearchingStage from './ResearchingStage/ResearchingStage';
+import { Spin } from 'antd';
 
 export interface Project {
 	id: string;
@@ -48,7 +49,7 @@ const ProjectPage: React.FC<PageProps> = ({ params }) => {
 	}
 
 	if (!project) {
-		return <div>Загрузка...</div>;
+		return <div className='h-full w-full flex items-center justify-center'><Spin size='large'/></div>;
 	}
 	//if(store.getStageById(Number(params.id)) === 'workflowRead')
 	//	return (<ReadingStage project={project} id={params.id}/>)
