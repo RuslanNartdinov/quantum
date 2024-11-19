@@ -33,4 +33,10 @@
 			margin-left: 7px;
 		}
 	}
+	box-shadow: none;
+	transition-duration: 0.3s;
+	cursor: pointer;
+	&:hover{
+		box-shadow: 0 0 15px 5px var(--dark-gold);
+	}
 }

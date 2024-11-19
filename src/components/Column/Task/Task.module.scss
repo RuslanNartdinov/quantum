@@ -1,3 +1,4 @@
+@import "/src/mixins/mixin.scss";
 .task{
 	height: 150px;
 	width: 100%;
@@ -5,12 +6,16 @@
 	border-radius: 15px;
 	color: var(--dark-gold);
 	padding: 10px;
+	cursor: pointer;
 	.taskName{
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		font-size: 18px;
-		padding: 5px 0;
+		padding: 5px;
+		@include gold-gradient;
+		color: var(--white);
+		border-radius: 5px;
 	}
 	.taskDescription{
 		width: 100%;
@@ -20,5 +25,10 @@
 		padding: 10px;
 		font-size: 16px;
 
+	}
+	box-shadow: none;
+	transition-duration: 0.3s;
+	&:hover{
+		box-shadow: 0 0 15px 5px var(--white);
 	}
 }
