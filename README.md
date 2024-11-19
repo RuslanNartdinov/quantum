@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Quantum: AI-Driven All-in-One Internal System
 
-First, run the development server:
+Our solution is an AI-powered internal system designed to streamline document handling, analysis, and feedback processes. By integrating multiple tools into a single platform, departments can save time, avoid app-switching, and enhance overall efficiency.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Table of Contents
+1. [Abstract](#abstract)  
+2. [Features](#features)  
+3. [Installation](#installation)  
+4. [Usage](#usage)  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Abstract
+This system revolutionizes document workflows by:
+- Enabling efficient document analysis and feedback without switching between apps.
+- Saving time and increasing productivity across departments.
 
-## Learn More
+The platform offers an integrated AI-driven solution to process documents, summarize information, and provide interactive assistance. Additionally, it addresses a secondary problem statement: aggregating and organizing news updates seamlessly.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Core Features
+1. **AI Summarizer**  
+   - Analyzes documents and provides concise summaries.
+   - Two summary modes:  
+     - **Brief Summary**: General project overview.  
+     - **Key Points Summary**: Highlights crucial details.  
 
-## Deploy on Vercel
+2. **AI QnA Interactive Assistant**  
+   - Users can ask questions and receive immediate answers.
+   - Powered by a locally trained model to enhance accuracy and maintain data security.  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Additional Feature
+1. **AI-Driven News Aggregator**  
+   - Extracts the latest news from user-listed credible sources.  
+   - Groups news by topics and provides relevant links.  
+   - Simplifies staying informed with a single click, eliminating manual browsing and note-taking.  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/RuslanNartdinov/quantum quantum
+   ```
+
+2. Navigate to the project directory:
+   ```bash
+   cd quantum
+   ```
+
+---
+
+## Usage
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Run the program:
+   ```bash
+   npm run dev
+   ```
+
+3. Follow this user flow for demonstration purposes:
+
+   ### **AI-Driven News Aggregator**
+   - Open the **News** tab.  
+   - Choose **Finances**.  
+
+   ### **Request Analysis Form**
+   - Open the **Requests** form.  
+   - Choose **42 Abu Dhabi**.  
+
+---
+
+Quantum empowers organizations to streamline workflows, simplify information processing, and improve communication efficiency with advanced AI solutions.
